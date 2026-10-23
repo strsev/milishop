@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -9,6 +10,10 @@ class ProductController extends Controller
 
     public function index()
     {
+        $products = Product::query()->with(['category', 'status'])->orderBy('id', 'desc')->get();
+        foreach ($products as $product) {
+            echo "<p>{$product->title} | {$product->catrgory->title} | {$product->status->title}</p>";
+        }
         return view('products.index');
     }
 
