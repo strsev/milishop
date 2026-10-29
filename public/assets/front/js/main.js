@@ -1,3 +1,21 @@
+function showCart(cart) {
+    $('#cart-modal .modal-body').html(cart);
+    $('#cart-modal').modal();
+}
+
+function getCart(action) {
+    $.ajax({
+        url: action,
+        type: 'get',
+        success: function (result) {
+            showCart(result);
+        },
+        error: function () {
+            alert('Error');
+        }
+    });
+}
+
 $(function() {
     $('.addtocart').on('submit', function(){
         let form = $ (this);

@@ -21,4 +21,9 @@ class CartController extends Controller
 
        return view('cart.cart-modal');
     }
+
+     public function show()
+    {
+        return view('cart.cart-modal');
+    }
 }
